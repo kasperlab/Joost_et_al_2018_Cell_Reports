@@ -1270,13 +1270,13 @@ def sim_lig_rec(dict_rec, dict_lig, pairs, repeats = 10000):
         nLig = len(dict_lig[kLig])
         
         for kRec in dict_rec.keys():
-            nRec = len(dict_lig[kRec])
+            nRec = len(dict_rec[kRec])
             
             output_tmp = []
             
             for r in range(repeats):
                 gLig = np.random.choice(list(set(pairs.index)), size = nLig, replace = False)
-                gRec = np.random.choice(list(set(pairs.values)), size = nLig, replace = False)
+                gRec = np.random.choice(list(set(pairs.values)), size = nRec, replace = False)
                                 
                 output_tmp.append(len([g for g in gRec if g in list(pairs.ix[gLig].values)]))
                 
